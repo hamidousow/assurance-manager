@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import IconDashboard from './components/icons/IconDashboard.vue';
+import AsideMenu from './components/AsideMenu.vue';
 
 const name = 'Hamidou';
 const currentDate = new Date().toJSON();
@@ -13,24 +15,7 @@ const currentDate = new Date().toJSON();
     <span> {{ currentDate }}</span>
   </header>
   <div id="parent">
-
-    <aside id="aside">
-        <nav>
-          <ul>
-            <li>
-              <RouterLink to="/">Home</RouterLink></li>
-            <li> 
-              <RouterLink to="/members">Membres</RouterLink> 
-            </li>
-            <li>
-              <RouterLink to="/contrats">Contrats</RouterLink>  
-            </li>
-            <li> 
-              <RouterLink to="/archives">Archives</RouterLink> 
-            </li>
-          </ul>
-        </nav>
-      </aside>  
+    <AsideMenu />
     <RouterView />
   </div>
 </template>
@@ -42,44 +27,21 @@ header {
   flex-direction: row;
   place-items: center;
   justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  padding: var(--padding);
 }
 
 .logo {
   display: block;
 }
 
+
 #parent {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
   height: calc(100vh - (var(--nav-height) + var(--padding)));
 }
 
-nav {
-  width: 100%;
-  height: var(--nav-height);
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav ul {
-  padding: 0;
-}
-
-nav ul li {
-  list-style: none;
-  text-align: left;
-}
-
-#aside {
-  border-right: 1px solid var(--color-grey);
-  height: 100%;
-}
-
-
-@media (min-width: 1024px) {
-  
-}
+@media (min-width: 1024px) {}
 </style>
