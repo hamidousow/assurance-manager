@@ -4,6 +4,7 @@ import AsideMenu from './components/AsideMenu.vue';
 
 const name = 'Hamidou';
 const currentDate = new Date().toJSON();
+
 </script>
 
 <template>

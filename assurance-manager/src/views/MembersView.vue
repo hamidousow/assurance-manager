@@ -1,23 +1,36 @@
 <script lang="ts" setup>
 import IconFilter from '@/components/icons/IconFilter.vue';
 import MembersTab from '@/components/MembersTab.vue';
+import CreateMemberModal from '@/components/modals/CreateMemberModal.vue';
 import { ref } from 'vue';
 
 const pageTitle = ref('');
+const showModal = ref(false);
+
 
 </script>
 <template>
     <div id="wrapper">
         <div class="title-wrapper">
             <h1>Membres</h1>
-            <a href="/members" id="button-create">+ Nouveau</a>
+            <input type="button" id="button-create" @click="showModal = true" value="+ Nouveau">
         </div>
         <div id="search-wrapper">
             <input type="search" name="" id="search-bar" placeholder="rechercher un membre par id, nom, prénom..">
-            <div> <IconFilter /> Filtres</div>
+            <div>
+                <IconFilter /> Filtres
+            </div>
         </div>
         <MembersTab />
     </div>
+    <Teleport to="body">
+        <!-- use the modal component, pass in the prop -->
+        <CreateMemberModal :show="showModal" @close="showModal = false">
+            <template #header>
+                <h3>Custom Header</h3>
+            </template>
+        </CreateMemberModal>
+    </Teleport>
 </template>
 
 <style scoped>
@@ -60,7 +73,7 @@ h1 {
     border-radius: 5px;
     text-align: center;
     font-size: 1em;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-white);
     padding: .5rem 1.5rem;
 }
