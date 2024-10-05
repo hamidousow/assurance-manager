@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import IconDashboard from './components/icons/IconDashboard.vue';
+import { RouterView } from 'vue-router'
 import AsideMenu from './components/AsideMenu.vue';
 
 const name = 'Hamidou';
@@ -35,7 +33,6 @@ header {
 .logo {
   display: block;
 }
-
 
 #parent {
   display: grid;
