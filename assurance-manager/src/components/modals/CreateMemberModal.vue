@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import MemberSubscriptionForm from '../forms/MemberSubscriptionForm.vue';
+
 
 const props = defineProps({
     show: Boolean
@@ -9,13 +11,19 @@ const props = defineProps({
 <template>
     <Transition>
         <div v-if="show" class="modal-mask">
-            <div class="modal-container"> 
+            <div class="modal-container">
+                <!-- <form action="/members" method="post">
+                    <div class="input-wrapper">
+                        <label for="name">Nom</label>
+                        <input type="text" placeholder="entrer le nom" id="name"/>
+                    </div>
+                </form> -->
+                <MemberSubscriptionForm />
                 <div class="buttons-wrapper">
-                <input type="submit" value="créer">
-                <input type="button" value="annuler" @click="$emit('close')">
+                    <input type="submit" value="créer">
+                    <input type="button" value="annuler" @click="$emit('close')">
+                </div>
             </div>
-            </div>
-            
         </div>
     </Transition>
 </template>
@@ -41,5 +49,16 @@ const props = defineProps({
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5em;
+}
+
+input[type="text"] {
+    border-radius: 5px;
+    padding: .6em 1em;
 }
 </style>
