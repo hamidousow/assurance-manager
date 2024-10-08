@@ -3,11 +3,10 @@ import { ref } from 'vue';
 import FirstStep from './steps/FirstStep.vue';
 import SecondStep from './steps/SecondStep.vue';
 import FinalStep from './steps/FinalStep.vue';
-import useForm from '../composables/MemberSubscriptionFormValues';
+import useForm from '../composables/useForm';
+import { useMemberCreationForm } from '@/stores/memberCreationForm';
 
-const {
-    values
-} = useForm()
+const formStorage = useMemberCreationForm()
 
 const steps = [
     FirstStep,
@@ -17,12 +16,11 @@ const steps = [
 
 const step = ref(0);
 
-const firstStep = FirstStep;
-
 const nextStep = () => {
     if(step.value < steps.length-1) {
         step.value++
     }
+    console.log(formStorage.updatedForm)
 }
 const previousStep = () => {
     if(step.value > 0) {
@@ -33,13 +31,12 @@ const previousStep = () => {
 <template>
     <div>
         <component 
-        :is="steps[step]"
-        :bind:formValues="values"
+            :is="steps[step]"
+            v-bind:formData="formStorage.updatedForm"
         >
 
         </component>
         <div class="wrapper-buttons">
-
             <button @click="previousStep()">retour</button>
             <button @click="nextStep()">suivant</button>
         </div>

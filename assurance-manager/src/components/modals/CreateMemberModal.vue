@@ -12,12 +12,6 @@ const props = defineProps({
     <Transition>
         <div v-if="show" class="modal-mask">
             <div class="modal-container">
-                <!-- <form action="/members" method="post">
-                    <div class="input-wrapper">
-                        <label for="name">Nom</label>
-                        <input type="text" placeholder="entrer le nom" id="name"/>
-                    </div>
-                </form> -->
                 <MemberSubscriptionForm />
                 <div class="buttons-wrapper">
                     <input type="button" value="annuler" @click="$emit('close')">
