@@ -20,7 +20,6 @@ const props = defineProps({
                 </form> -->
                 <MemberSubscriptionForm />
                 <div class="buttons-wrapper">
-                    <input type="submit" value="créer">
                     <input type="button" value="annuler" @click="$emit('close')">
                 </div>
             </div>

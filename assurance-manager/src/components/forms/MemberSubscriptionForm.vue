@@ -22,13 +22,11 @@ const firstStep = FirstStep;
 const nextStep = () => {
     if(step.value < steps.length-1) {
         step.value++
-        console.log(step.value)
     }
 }
 const previousStep = () => {
     if(step.value > 0) {
         step.value--
-        console.log(step.value)
     }
 }
 </script>
