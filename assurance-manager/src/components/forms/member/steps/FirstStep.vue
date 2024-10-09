@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import useForm from '@/components/composables/useForm';
 import { useMemberCreationForm } from '@/stores/memberCreationForm';
-import { FormKit } from '@formkit/vue';
 
 // const formStorage = useMemberCreationForm()
 const props = defineProps<{
-    formData: {        
+    formData: {
         firstname: string
         lastname: string
         dateBirth: string
@@ -17,65 +16,62 @@ const props = defineProps<{
 
 </script>
 <template>
-        <div class="wrapper-fullname">
-
-            <FormKit 
-                type="text"
-                name="lastname"
-                id="lastname"
-                label="Nom"
-                placeholder="Doe"
-                v-model="props.formData.lastname"
-            />
-            <FormKit 
-                type="text"
-                name="firstname"
-                id="firstname"
-                label="Prénom"
-                placeholder="John"
-                v-model="props.formData.firstname"
-            />            
-        </div>
-        <div class="wrapper-birth-data">
-            <FormKit 
-                type="date"
-                name="dateBirth"
-                id="dateBirth"
-                label="Date de naissance"
-                placeholder="Entrer la date de naissance"
-                v-model="props.formData.dateBirth"
-            />
-            <div class="input-wrapper">
-                <FormKit 
-                type="select"
-                name="birthCountry"
-                label="Pays de naissance"
-                placeholder="Sélectionner le pays de naissance"
-                :options="['France', 'Belgique', 'Sénégal']"
-                v-model="props.formData.birthCountry"
-                />
+    <div>
+        <div class="flex flex-col gap-y-5 mb-8">
+            <div class="wrapper-fullname flex justify-between gap-x-4">
+                <div class="input-wrapper flex-1">
+                    <label for="lastname"> Nom </label>
+                    <input type="text" placeholder="entrer le nom" id="lastname" class="border"
+                        v-model="props.formData.lastname" />
+                </div>
+                <div class="input-wrapper flex-1">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" placeholder="entrer le prénom" id="firstname" class="border"
+                        v-model="props.formData.firstname" />
+                </div>
             </div>
-            <div class="input-wrapper">
-                <h3>Genre</h3>
-                <FormKit
-                    type="radio"
-                    name="gender"
-                    :options="['masculin', 'feminin']"
-                    v-model="props.formData.gender"
-                />
+            <div class="wrapper-birth-data flex gap-x-4">
+                <div class="input-wrapper flex-1">
+                    <label for="dateBirth">Date de naissance</label>
+                    <input type="date" id="dateBirth" name="date-birth" class="border p-2"
+                        v-model="props.formData.dateBirth" />
+                </div>
+                <div class="input-wrapper flex-1">
+                    <div class="input-wrapper">
+                        <label for="birthCountry">Pays de naissance</label>
+                        <select id="birthCountry" class="border p-2" v-model="props.formData.birthCountry">
+                            <option value="" selected>sélectionner le pays de naissance</option>
+                            <option value="France">France</option>
+                            <option value="Belgique">Belgique</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="input-wrapper">
-                <FormKit 
-                    type="select"
-                    name="nationality"
-                    label="Nationnalité"
-                    placeholder="Sélectionner la nationnalité"
-                    :options="['France', 'Belgique', 'Sénégal']"
-                    v-model="props.formData.nationality"
-                />                
+            <div class="wrapper-gender-origin flex gap-x-4">
+                <div class="input-wrapper flex-1">
+                    <h3>Genre</h3>
+                    <div class="input-wrapper">
+                        <label>
+                            <input type="radio" name="gender" value="homme" class="me-5" v-model="props.formData.gender"
+                                checked>Homme
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="femme" class="me-5"
+                                v-model="props.formData.gender">Femme
+                        </label>
+                    </div>
+                </div>
+                <div class="input-wrapper flex-1">
+                    <label for="nationality">Nationnalité</label>
+                    <select id="nationality" class="border p-2" v-model="props.formData.nationality">
+                        <option value="">sélectionner la nationnalité</option>
+                        <option value="France">France</option>
+                        <option value="Belgique">Belgique</option>
+                    </select>
+                </div>
             </div>
         </div>
-    
+    </div>
 </template>
 
 

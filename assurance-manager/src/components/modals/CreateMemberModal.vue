@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import MemberSubscriptionForm from '../forms/member/MemberSubscriptionForm.vue';
 
-
-
 const props = defineProps({
     show: Boolean
 })
@@ -12,14 +10,26 @@ const props = defineProps({
 <template>
     <Transition>
         <div v-if="show" class="modal-mask">
-            <div class="modal-container">
-                <h1 class="text-3xl font-bold underline">
-                    Hello world!
-                </h1>
-                <MemberSubscriptionForm />
-                <div class="buttons-wrapper">
-                    <input type="button" value="annuler" @click="$emit('close')">
+            <div class="modal-container flex flex-col justify-between py-14 px-8">
+                <div>
+                    <div class="flex flex-row justify-between">
+                        <h3 class="uppercase font-bold mb-8">Création d'un nouveau membre</h3>
+                        <div class="buttons-wrapper">
+                            <input type="button" value="fermer" @click="$emit('close')">
+                        </div>
+                    </div>
+                    <nav class="flex flex-row justify-between gap-1">
+                        <div class="flex flex-1 flex-col">
+                            <div class="h-1 bg-blue-600 flex rounded-2xl"></div>
+                            premier form
+                        </div>
+                        <div class="flex flex-1 flex-col">
+                            <div class="h-1 bg-blue-600 flex"></div>
+                            second form
+                        </div>
+                    </nav>
                 </div>
+                <MemberSubscriptionForm />
             </div>
         </div>
     </Transition>
@@ -39,9 +49,9 @@ const props = defineProps({
 }
 
 .modal-container {
-    width: 300px;
+    width: 600px;
+    height: 680px;
     margin: auto;
-    padding: 20px 30px;
     background-color: var(--color-white);
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
