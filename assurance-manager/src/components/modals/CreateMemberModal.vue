@@ -15,7 +15,7 @@ const props = defineProps({
                     <div class="flex flex-row justify-between">
                         <h3 class="uppercase font-bold mb-8">Création d'un nouveau membre</h3>
                         <div class="buttons-wrapper">
-                            <input type="button" value="fermer" @click="$emit('close')">
+                            <input type="button" value="fermer" class="border py-1 px-4 rounded border-red-800 text-red-800" @click="$emit('close')">
                         </div>
                     </div>
                     <nav class="flex flex-row justify-between gap-1">
