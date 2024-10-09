@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@formkit/vue':
+        specifier: ^1.6.7
+        version: 1.6.7(tailwindcss@3.4.13)(vue@3.5.11(typescript@5.4.5))
       pinia:
         specifier: ^2.1.7
         version: 2.2.4(typescript@5.4.5)(vue@3.5.11(typescript@5.4.5))
@@ -394,6 +397,49 @@ packages:
   '@eslint/js@8.57.1':
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@formkit/core@1.6.7':
+    resolution: {integrity: sha512-wEoWK7crcCPRV5KJfEGLjjIS+qwbuD8I5Ur0zTtKRQrdO4oRL6kVoubxQOpgnq1l8sWfcRY8Wpf22Wna2LD20Q==}
+
+  '@formkit/dev@1.6.7':
+    resolution: {integrity: sha512-mMtkfvfkl1P1v0haizUE4DadalbG9/3m0ZymmMKKb0F3pojQJFtdfohy67ZQKtmzy4bamowHyEUr+XzLbKY2EA==}
+
+  '@formkit/i18n@1.6.7':
+    resolution: {integrity: sha512-i9Mnc2XHCm2c10fppEIxdGv+jqOaixO22iFXX3xF+AkJnxtOzV5hP4f3/TeG+BNahGUq8vj+e1y+VMnjS6duxA==}
+
+  '@formkit/inputs@1.6.7':
+    resolution: {integrity: sha512-VLxoAJn5VGOEXkGI499lju5Irnu12cu+spI1HL//46nlVkqnb1XcV0k0MK9K+hogz4fGmyZUvHf0lxU6dh7ZZQ==}
+
+  '@formkit/observer@1.6.7':
+    resolution: {integrity: sha512-ei5z5ernNMKKiBuoRcFgEthhP1i+KKb02hsPsikLA3XehuoJdWIejn9AAq6jOEGbUMZ5XAAgFJcxzO5tnKuPnw==}
+
+  '@formkit/rules@1.6.7':
+    resolution: {integrity: sha512-adzOuTvf6ghZbV0g0ZH9+MU9jfoF4DojBztAbqzFP/fT4d+WxhSHHlkWq6PU66fHPy3OH4DkWdx9trL1wGHuzQ==}
+
+  '@formkit/themes@1.6.7':
+    resolution: {integrity: sha512-TIiWr4TMAFUg1pQz2E4GErfAhBv2Q2VbWlk6pqXPWI8UyPTjmcinEnCSIWDCX6FPPqiYShBnh8123nTO7pyvjA==}
+    peerDependencies:
+      tailwindcss: ^3.2.0
+      unocss: 0.x.x
+      windicss: ^3.0.0
+    peerDependenciesMeta:
+      tailwindcss:
+        optional: true
+      unocss:
+        optional: true
+      windicss:
+        optional: true
+
+  '@formkit/utils@1.6.7':
+    resolution: {integrity: sha512-aU3CDLzCkC5Dnx6iS3swbsIbys7E+2VOaLWFRnS7wk7kFa8EnENi67qc2E2KFE05RT4UCEAIYMAQY6wvek29gA==}
+
+  '@formkit/validation@1.6.7':
+    resolution: {integrity: sha512-4wUUG+Pz3hPeiLccYiXAzsrF7SXk28PYAeHJeBngIv9K82ieljBJpvvuCJDyA6SeSMOvmbI92TG4wx4u5cDLOw==}
+
+  '@formkit/vue@1.6.7':
+    resolution: {integrity: sha512-w3kjQD0lvtImyyTiy+fLaIZM/4r6sLDbpBIwke8ZA/d5orzNE96JPaloVKbH+HwCo6+z/1mclh1pW1S+7RgMcw==}
+    peerDependencies:
+      vue: ^3.4.0
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -2546,6 +2592,68 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.1': {}
+
+  '@formkit/core@1.6.7':
+    dependencies:
+      '@formkit/utils': 1.6.7
+
+  '@formkit/dev@1.6.7':
+    dependencies:
+      '@formkit/core': 1.6.7
+      '@formkit/utils': 1.6.7
+
+  '@formkit/i18n@1.6.7':
+    dependencies:
+      '@formkit/core': 1.6.7
+      '@formkit/utils': 1.6.7
+      '@formkit/validation': 1.6.7
+
+  '@formkit/inputs@1.6.7':
+    dependencies:
+      '@formkit/core': 1.6.7
+      '@formkit/utils': 1.6.7
+
+  '@formkit/observer@1.6.7':
+    dependencies:
+      '@formkit/core': 1.6.7
+      '@formkit/utils': 1.6.7
+
+  '@formkit/rules@1.6.7':
+    dependencies:
+      '@formkit/core': 1.6.7
+      '@formkit/utils': 1.6.7
+      '@formkit/validation': 1.6.7
+
+  '@formkit/themes@1.6.7(tailwindcss@3.4.13)':
+    dependencies:
+      '@formkit/core': 1.6.7
+    optionalDependencies:
+      tailwindcss: 3.4.13
+
+  '@formkit/utils@1.6.7': {}
+
+  '@formkit/validation@1.6.7':
+    dependencies:
+      '@formkit/core': 1.6.7
+      '@formkit/observer': 1.6.7
+      '@formkit/utils': 1.6.7
+
+  '@formkit/vue@1.6.7(tailwindcss@3.4.13)(vue@3.5.11(typescript@5.4.5))':
+    dependencies:
+      '@formkit/core': 1.6.7
+      '@formkit/dev': 1.6.7
+      '@formkit/i18n': 1.6.7
+      '@formkit/inputs': 1.6.7
+      '@formkit/observer': 1.6.7
+      '@formkit/rules': 1.6.7
+      '@formkit/themes': 1.6.7(tailwindcss@3.4.13)
+      '@formkit/utils': 1.6.7
+      '@formkit/validation': 1.6.7
+      vue: 3.5.11(typescript@5.4.5)
+    transitivePeerDependencies:
+      - tailwindcss
+      - unocss
+      - windicss
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:

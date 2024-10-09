@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: [
+    "./app.vue",
+    "./formkit.theme.ts"
+  ],
   theme: {
     extend: {},
   },

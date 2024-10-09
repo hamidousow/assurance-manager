@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import useForm from '@/components/composables/useForm';
 import { useMemberCreationForm } from '@/stores/memberCreationForm';
+import { FormKit } from '@formkit/vue';
 
 // const formStorage = useMemberCreationForm()
 const props = defineProps<{
@@ -16,8 +17,17 @@ const props = defineProps<{
 
 </script>
 <template>
-    <form action="">
+    
         <div class="wrapper-fullname">
+
+            <FormKit 
+                type="text"
+                name="lastname"
+                id="lastname"
+                label="Nom"
+                placeholder="John Doe"
+
+            />
             <div class="input-wrapper">
                 <label for="lastname"> Nom </label>
                 <input type="text" placeholder="entrer le nom" id="lastname" v-model="props.formData.lastname"/>
@@ -65,7 +75,7 @@ const props = defineProps<{
                 </div>
             </div>
         </div>
-    </form>
+    
 </template>
 
 
