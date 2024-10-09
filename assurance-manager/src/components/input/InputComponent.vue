@@ -1,5 +1,4 @@
 <script setup>
-    const model = defineModel()
     
 </script>
 

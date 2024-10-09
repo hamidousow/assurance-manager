@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import FirstStep from './steps/FirstStep.vue';
 import SecondStep from './steps/SecondStep.vue';
 import FinalStep from './steps/FinalStep.vue';
-import useForm from '../composables/useForm';
+import useForm from '../../composables/useForm';
 import { useMemberCreationForm } from '@/stores/memberCreationForm';
 
 const formStorage = useMemberCreationForm()

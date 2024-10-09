@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import MemberSubscriptionForm from '../forms/MemberSubscriptionForm.vue';
+import MemberSubscriptionForm from '../forms/member/MemberSubscriptionForm.vue';
+
 
 
 const props = defineProps({
