@@ -35,14 +35,14 @@ const createMember = async (fields: any) => {
 
 </script>
 <template>
-    <FormKit type="form" @submit="createMember" submit-label="Créer Membre">
+    <!-- <FormKit type="form" @submit="createMember" submit-label="Créer Membre"> -->
         <component :is="steps[step]" v-bind:formData="formStorage.updatedForm">
         </component>
         <div class="wrapper-buttons">
             <button @click="previousStep()">retour</button>
             <button @click="nextStep()">suivant</button>
         </div>
-    </FormKit>
+    <!-- </FormKit> -->
 </template>
 
 

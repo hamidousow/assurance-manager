@@ -17,7 +17,6 @@ const props = defineProps<{
 
 </script>
 <template>
-    
         <div class="wrapper-fullname">
 
             <FormKit 
@@ -25,54 +24,55 @@ const props = defineProps<{
                 name="lastname"
                 id="lastname"
                 label="Nom"
-                placeholder="John Doe"
-
+                placeholder="Doe"
+                v-model="props.formData.lastname"
             />
-            <div class="input-wrapper">
-                <label for="lastname"> Nom </label>
-                <input type="text" placeholder="entrer le nom" id="lastname" v-model="props.formData.lastname"/>
-            </div>
-            <div class="input-wrapper">
-                <label for="firstname">Prénom</label>
-                <input type="text" placeholder="entrer le nom" id="firstname" v-model="props.formData.firstname"/>
-            </div>
+            <FormKit 
+                type="text"
+                name="firstname"
+                id="firstname"
+                label="Prénom"
+                placeholder="John"
+                v-model="props.formData.firstname"
+            />            
         </div>
         <div class="wrapper-birth-data">
+            <FormKit 
+                type="date"
+                name="dateBirth"
+                id="dateBirth"
+                label="Date de naissance"
+                placeholder="Entrer la date de naissance"
+                v-model="props.formData.dateBirth"
+            />
             <div class="input-wrapper">
-                <label for="dateBirth">Date de naissance</label>
-                <input type="date" id="dateBirth" name="date-birth" v-model="props.formData.dateBirth"/>
-            </div>
-            <div class="input-wrapper">
-                <div class="input-wrapper">
-                    <label for="birthCountry">Pays de naissance</label>
-                    <select id="birthCountry" v-model="props.formData.birthCountry">
-                        <option value="sélectionner le pays de naissance">sélectionner le pays de naissance</option>
-                        <option value="France">France</option>
-                        <option value="Belgique">Belgique</option>
-                    </select>
-                </div>
+                <FormKit 
+                type="select"
+                name="birthCountry"
+                label="Pays de naissance"
+                placeholder="Sélectionner le pays de naissance"
+                :options="['France', 'Belgique', 'Sénégal']"
+                v-model="props.formData.birthCountry"
+                />
             </div>
             <div class="input-wrapper">
                 <h3>Genre</h3>
-                <div class="input-wrapper">
-                    <label for="gender">
-                        <input type="radio" name="gender" id="gender" value="homme" v-model="props.formData.gender" checked>Homme
-                    </label>                    
-                    <label for="gender">
-                        <input type="radio" name="gender" id="gender" value="femme" v-model="props.formData.gender">Femme
-                    </label>
-
-                </div>
+                <FormKit
+                    type="radio"
+                    name="gender"
+                    :options="['masculin', 'feminin']"
+                    v-model="props.formData.gender"
+                />
             </div>
             <div class="input-wrapper">
-                <div class="input-wrapper">
-                    <label for="nationality">Nationnalité</label>
-                    <select id="nationality" v-model="props.formData.nationality">
-                        <option value="sélectionner le pays de naissance">sélectionner la nationnalité</option>
-                        <option value="France">France</option>
-                        <option value="Belgique">Belgique</option>
-                    </select>
-                </div>
+                <FormKit 
+                    type="select"
+                    name="nationality"
+                    label="Nationnalité"
+                    placeholder="Sélectionner la nationnalité"
+                    :options="['France', 'Belgique', 'Sénégal']"
+                    v-model="props.formData.nationality"
+                />                
             </div>
         </div>
     
