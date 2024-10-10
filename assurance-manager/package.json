@@ -16,6 +16,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.1.5",
+    "@vueform/vueform": "^1.10.10",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
     "pinia": "^2.1.7",
