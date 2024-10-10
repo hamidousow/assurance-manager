@@ -10,7 +10,10 @@ const props = defineProps<{
         dateBirth: string
         birthCountry: string
         gender: string
-        nationality: string
+        nationality: string,
+        email: string,
+        phoneNumber: string,
+        phoneIndicator: string
     }
 }>()
 
@@ -68,6 +71,18 @@ const props = defineProps<{
                         <option value="France">France</option>
                         <option value="Belgique">Belgique</option>
                     </select>
+                </div>
+            </div>
+            <div class="wrapper-fullname flex justify-between gap-x-4">
+                <div class="input-wrapper flex-1">
+                    <label for="email"> Email </label>
+                    <input type="email" placeholder="saisir une adresse email" id="email" class="border p-2 rounded"
+                        v-model="props.formData.email" required/>
+                </div>
+                <div class="input-wrapper flex-1">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" placeholder="saisir le numero de téléphone" id="phone" class="border p-2 rounded"
+                        v-model="props.formData.phoneNumber" required/>
                 </div>
             </div>
         </div>
