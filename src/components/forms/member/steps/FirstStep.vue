@@ -24,25 +24,29 @@ const props = defineProps<{
             <div class="wrapper-fullname flex justify-between gap-x-4">
                 <div class="input-wrapper flex-1">
                     <label for="lastname"> Nom </label>
-                    <input type="text" placeholder="entrer le nom" id="lastname" class="border"
+                    <input type="text" placeholder="entrer le nom" id="lastname" class="border p-2 rounded"
                         v-model="props.formData.lastname" />
                 </div>
+                <!-- <Vueform>
+                    <TextElement label="Nom" input-type="text" name="lastname" id="lastname" placeholder="Saisir le nom"
+                        rules="required" :messages="{ required: 'Please fill in' }" />
+                </Vueform> -->
                 <div class="input-wrapper flex-1">
                     <label for="firstname">Prénom</label>
-                    <input type="text" placeholder="entrer le prénom" id="firstname" class="border"
+                    <input type="text" placeholder="entrer le prénom" id="firstname" class="border p-2 rounded"
                         v-model="props.formData.firstname" />
                 </div>
             </div>
             <div class="wrapper-birth-data flex gap-x-4">
                 <div class="input-wrapper flex-1">
                     <label for="dateBirth">Date de naissance</label>
-                    <input type="date" id="dateBirth" name="date-birth" class="border p-2"
+                    <input type="date" id="dateBirth" name="date-birth" class="border p-2 rounded"
                         v-model="props.formData.dateBirth" />
                 </div>
                 <div class="input-wrapper flex-1">
                     <div class="input-wrapper">
                         <label for="birthCountry">Pays de naissance</label>
-                        <select id="birthCountry" class="border p-2" v-model="props.formData.birthCountry">
+                        <select id="birthCountry" class="border p-2 rounded" v-model="props.formData.birthCountry">
                             <option value="" selected>sélectionner le pays de naissance</option>
                             <option value="France">France</option>
                             <option value="Belgique">Belgique</option>
@@ -66,7 +70,7 @@ const props = defineProps<{
                 </div>
                 <div class="input-wrapper flex-1">
                     <label for="nationality">Nationnalité</label>
-                    <select id="nationality" class="border p-2" v-model="props.formData.nationality">
+                    <select id="nationality" class="border p-2 rounded" v-model="props.formData.nationality">
                         <option value="">sélectionner la nationnalité</option>
                         <option value="France">France</option>
                         <option value="Belgique">Belgique</option>
@@ -77,12 +81,12 @@ const props = defineProps<{
                 <div class="input-wrapper flex-1">
                     <label for="email"> Email </label>
                     <input type="email" placeholder="saisir une adresse email" id="email" class="border p-2 rounded"
-                        v-model="props.formData.email" required/>
+                        v-model="props.formData.email" required />
                 </div>
                 <div class="input-wrapper flex-1">
                     <label for="phone">Téléphone</label>
                     <input type="tel" placeholder="saisir le numero de téléphone" id="phone" class="border p-2 rounded"
-                        v-model="props.formData.phoneNumber" required/>
+                        v-model="props.formData.phoneNumber" required />
                 </div>
             </div>
         </div>
