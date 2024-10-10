@@ -1,17 +1,8 @@
 <script lang="ts" setup>
+import type { Member } from '@/types/Member';
 
-const props = defineProps<{
-    formData: {
-        doorNumber: string,
-        streetName: string,
-        complementaryAdressInfo: string,
-        city: string,
-        zipCode: string,
-        region: string,
-        livingCountry: string
-    }
 
-}>()
+const props = defineProps<{ formData: Member }>()
 
 </script>
 <template>
@@ -21,12 +12,12 @@ const props = defineProps<{
                 <div class="input-wrapper flex-1">
                     <label for="doorNumber"> Numéro de porte </label>
                     <input type="text" placeholder="Saisir numéro de porte" id="doorNumber" class="border p-2 rounded"
-                        v-model="props.formData.doorNumber" />
+                        v-model="props.formData.address.doorNumber" />
                 </div>
                 <div class="input-wrapper flex-1">
                     <label for="streetName">Nom de la rue, avenu, boulevard...</label>
                     <input type="text" placeholder="Nom de la voie" id="streetName" class="border p-2 rounded"
-                        v-model="props.formData.streetName" />
+                        v-model="props.formData.address.streetName" />
                 </div>
             </div>
             <div class="complementary-address-info flex gap-x-4">
@@ -34,7 +25,7 @@ const props = defineProps<{
                     <label for="complementaryAdressInfo">Complément d'adresse (optionnel)</label>
                     <input type="text" placeholder="Appartement, étage, bâtiment, boîte postale, etc"
                         id="complementaryAdressInfo" class="border p-2 rounded"
-                        v-model="props.formData.complementaryAdressInfo" />
+                        v-model="props.formData.address.complementaryAdressInfo" />
                 </div>
             </div>
 
@@ -42,23 +33,23 @@ const props = defineProps<{
                 <div class="input-wrapper flex-1">
                     <label for="city">Ville</label>
                     <input type="text" placeholder="saisir la ville" id="city" class="border p-2 rounded"
-                        v-model="props.formData.city" />
+                        v-model="props.formData.address.city" />
                 </div>
                 <div class="input-wrapper flex-1">
                     <label for="zipCode">Code postal</label>
                     <input type="text" placeholder="code postal" id="zipCode" class="border p-2 rounded"
-                        v-model="props.formData.zipCode" />
+                        v-model="props.formData.address.zipCode" />
                 </div>
             </div>
             <div class="wrapper-city flex justify-between gap-x-4">
                 <div class="input-wrapper flex-1">
                     <label for="region">Région</label>
                     <input type="text" placeholder="saisir la région" id="region" class="border p-2 rounded"
-                        v-model="props.formData.region" />
+                        v-model="props.formData.address.region" />
                 </div>
                 <div class="input-wrapper flex-1">
                     <label for="zipCode">Pays</label>
-                    <select id="livingCountry" class="border p-2 rounded" v-model="props.formData.livingCountry">
+                    <select id="country" class="border p-2 rounded" v-model="props.formData.address.country">
                         <option value="" selected>sélectionner le pays de résidence</option>
                         <option value="France">France</option>
                         <option value="Belgique">Belgique</option>

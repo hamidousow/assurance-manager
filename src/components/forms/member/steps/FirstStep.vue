@@ -1,20 +1,11 @@
 <script lang="ts" setup>
 import useForm from '@/components/composables/useForm';
 import { useMemberCreationForm } from '@/stores/memberCreationForm';
+import type { Member } from '@/types/Member';
 
 // const formStorage = useMemberCreationForm()
 const props = defineProps<{
-    formData: {
-        firstname: string
-        lastname: string
-        dateBirth: string
-        birthCountry: string
-        gender: string
-        nationality: string,
-        email: string,
-        phoneNumber: string,
-        phoneIndicator: string
-    }
+    formData: Member
 }>()
 
 </script>
@@ -59,8 +50,8 @@ const props = defineProps<{
                     <h3>Genre</h3>
                     <div class="input-wrapper">
                         <label>
-                            <input type="radio" name="gender" value="homme" class="me-5" v-model="props.formData.gender"
-                                checked>Homme
+                            <input type="radio" name="gender" value="homme" class="me-5"
+                                v-model="props.formData.gender">Homme
                         </label>
                         <label>
                             <input type="radio" name="gender" value="femme" class="me-5"
