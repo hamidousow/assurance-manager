@@ -17,27 +17,30 @@ const closeModal = () => {
 
 </script>
 <template>
-    <div id="wrapper">
-        <div class="title-wrapper">
-            <h1>Membres</h1>
-            <input type="button" id="button-create" @click="showModal = true" value="+ Nouveau">
-        </div>
-        <div id="search-wrapper">
-            <input type="search" name="" id="search-bar" placeholder="rechercher un membre par id, nom, prénom..">
-            <div>
-                <IconFilter /> Filtres
+    <div>
+
+        <div id="wrapper">
+            <div class="title-wrapper">
+                <h1>Membres</h1>
+                <input type="button" id="button-create" @click="showModal = true" value="+ Nouveau">
             </div>
+            <div id="search-wrapper">
+                <input type="search" name="" id="search-bar" placeholder="rechercher un membre par id, nom, prénom..">
+                <div>
+                    <IconFilter /> Filtres
+                </div>
+            </div>
+            <MembersTab />
         </div>
-        <MembersTab />
+        <Teleport to="body">
+            <!-- use the modal component, pass in the prop -->
+            <CreateMemberModal :show="showModal" @close="closeModal">
+                <template #header>
+                    <h3>Custom Header</h3>
+                </template>
+            </CreateMemberModal>
+        </Teleport>
     </div>
-    <Teleport to="body">
-        <!-- use the modal component, pass in the prop -->
-        <CreateMemberModal :show="showModal" @close="closeModal">
-            <template #header>
-                <h3>Custom Header</h3>
-            </template>
-        </CreateMemberModal>
-    </Teleport>
 </template>
 
 <style scoped>

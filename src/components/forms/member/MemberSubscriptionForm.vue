@@ -11,7 +11,7 @@ const formStorage = useMemberCreationForm()
 const steps = [
     FirstStep,
     SecondStep,
-    FinalStep
+    FinalStep,
 ]
 
 const step = ref(0);
@@ -20,7 +20,6 @@ const nextStep = () => {
     if (step.value < steps.length - 1) {
         step.value++
     }
-    console.log(formStorage.updatedForm)
 }
 const previousStep = () => {
     if (step.value > 0) {
@@ -29,17 +28,25 @@ const previousStep = () => {
 }
 
 const createMember = async (fields: any) => {
+    formStorage.$saveMember()
     await new Promise((r) => setTimeout(r, 1000))
     alert(JSON.stringify(fields))
 }
 
 </script>
 <template>
-    <component :is="steps[step]" v-bind:formData="formStorage.updatedForm">
-    </component>
-    <div class="wrapper-buttons flex flex-row justify-between items-end">
-        <button class="bg-blue-600 py-2 px-10 rounded text-white" @click="previousStep()">retour</button>
-        <button class="bg-blue-600 py-2 px-10 rounded text-white" @click="nextStep()">suivant</button>
+    <div>
+        <component :is="steps[step]" v-bind:formData="formStorage.updatedForm">
+        </component>
+        <div class="wrapper-buttons flex flex-row justify-between items-end">
+            <button :disabled="steps[step].__name === 'FirstStep'" class="bg-blue-600 py-2 px-10 rounded text-white"
+                @click="previousStep()">retour</button>
+            <button v-if="steps[step].__name !== 'FinalStep'" class="bg-blue-600 py-2 px-10 rounded text-white"
+                @click="nextStep()">suivant</button>
+            <button v-if="steps[step].__name === 'FinalStep'" class="bg-blue-600 py-2 px-10 rounded text-white"
+                @click="createMember(formStorage.updatedForm)">Créer
+                membre</button>
+        </div>
     </div>
 
 </template>

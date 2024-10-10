@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { useMemberCreationForm } from '@/stores/memberCreationForm';
 
+const memberStore = useMemberCreationForm();
+const allMembers = memberStore.$getAllMember();
 </script>
 <template>
     <table>
@@ -16,26 +19,15 @@
             </tr>
         </thead>
         <tbody>
-            
-            <tr>
+            <div v-if="memberStore.allMembersUpdated.length === 0">Aucun membre.</div>
+            <tr v-for="member in memberStore.allMembersUpdated" :key="member.email">
                 <td data-name="selected"><input type="checkbox" name="member" /></td>
                 <td data-name="id">2</td>
-                <td data-name="lastname">sow</td>
-                <td data-name="firstname">Hamidou</td>
+                <td data-name="lastname">{{ member.lastname }}</td>
+                <td data-name="firstname">{{ member.firstname }}</td>
                 <td data-name="contract">Jeune</td>
                 <td data-name="status">
-                    <div class="dot"></div> 
-                    <span>À jour</span>
-                </td>
-            </tr>
-            <tr>
-                <td data-name="selected"><input type="checkbox" name="member" /></td>
-                <td data-name="id">2</td>
-                <td data-name="lastname">sow</td>
-                <td data-name="firstname">Hamidou</td>
-                <td data-name="contract">Jeune</td>
-                <td data-name="status">
-                    <div class="dot"></div> 
+                    <div class="dot"></div>
                     <span>À jour</span>
                 </td>
             </tr>
