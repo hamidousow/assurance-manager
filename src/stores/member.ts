@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-labels */
 import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
-import { Member } from '@/types/Member'
+import type { Member } from '@/types/Member'
+
 
 export const useMember = defineStore('member', () => {
 
@@ -25,6 +26,12 @@ export const useMember = defineStore('member', () => {
             zipCode: '',
             region: '',
             country: ''
+        },
+        contract: {
+            type: '',
+            amount: 0,
+            isPaymentComplete: false,
+            dateCreation: new Date(Date.now())
         }
     })
 
@@ -57,6 +64,12 @@ export const useMember = defineStore('member', () => {
                 zipCode: '',
                 region: '',
                 country: ''
+            },
+            contract: {
+                type: '',
+                amount: 0,
+                isPaymentComplete: false,
+                dateCreation: new Date(Date.now())
             }
         })
     }
@@ -68,7 +81,7 @@ export const useMember = defineStore('member', () => {
         localStorage.setItem('all-members', JSON.stringify(allMembers))
     }
 
-    function $getAllMember() {
+    function $getAllMembers() {
 
         const strObj = localStorage.getItem('all-members');
 
@@ -85,5 +98,5 @@ export const useMember = defineStore('member', () => {
         }
     }
 
-    return { defaultMember, getMember, $reset, $getAllMember, $saveMember, getAllMembers }
+    return { defaultMember, getMember, $reset, $getAllMembers, $saveMember, getAllMembers }
 })

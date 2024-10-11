@@ -4,9 +4,7 @@ import { onMounted } from 'vue';
 
 const memberStore = useMember();
 
-memberStore.$getAllMember();
-
-
+memberStore.$getAllMembers();
 
 </script>
 <template>
@@ -30,10 +28,10 @@ memberStore.$getAllMember();
                 <td data-name="id">2</td>
                 <td data-name="lastname">{{ member.lastname }}</td>
                 <td data-name="firstname">{{ member.firstname }}</td>
-                <td data-name="contract">Jeune</td>
+                <td data-name="contract">{{ member.contract.type }}</td>
                 <td data-name="status">
                     <div class="dot"></div>
-                    <span>À jour</span>
+                    <span> {{ member.contract.isPaymentComplete }}</span>
                 </td>
             </tr>
         </tbody>
