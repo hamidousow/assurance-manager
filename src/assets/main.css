@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 #app {
   /* max-width: 1280px; */
   display: grid;
@@ -36,16 +35,12 @@ ul li {
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(252, 60%, 20%, 0.2);
+    background-color: hsla(0, 0%, 0%, 0.05);
   }
 }
 
 @media (min-width: 765px) {
-
   #app {
     display: grid;
   }
-
-  
-  
 }
