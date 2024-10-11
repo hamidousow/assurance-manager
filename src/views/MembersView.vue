@@ -25,7 +25,7 @@ const closeModal = () => {
             </div>
             <div id="search-wrapper">
                 <input type="search" name="" id="search-bar" placeholder="rechercher un membre par id, nom, prénom..">
-                <div>
+                <div class="flex flex-row gap-2 px-2 py-1">
                     <IconFilter /> Filtres
                 </div>
             </div>
