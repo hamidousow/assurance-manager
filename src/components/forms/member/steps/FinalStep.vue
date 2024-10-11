@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
 const props = defineProps<{
-    formData: {
+    memberData: {
         typeContract: string,
         statusDeadline: boolean
     }
@@ -16,7 +16,7 @@ const props = defineProps<{
                 <div class="wrapper-fullname flex justify-between gap-x-4">
                     <div class="input-wrapper flex-1">
                         <label for="typeContract">Type de contrat</label>
-                        <select id="typeContract" class="border p-2 rounded" v-model="props.formData.typeContract">
+                        <select id="typeContract" class="border p-2 rounded" v-model="props.memberData.typeContract">
                             <option>sélectionner le type de contrat</option>
                             <option value="Jeune">Jeune</option>
                             <option value="Famille">Famille</option>
@@ -28,11 +28,11 @@ const props = defineProps<{
                         <div class="input-wrapper">
                             <label>
                                 <input type="radio" name="statusDeadline" value="homme" class="me-5"
-                                    v-model="props.formData.statusDeadline">À jour
+                                    v-model="props.memberData.statusDeadline">À jour
                             </label>
                             <label>
                                 <input type="radio" name="statusDeadline" value="femme" class="me-5"
-                                    v-model="props.formData.statusDeadline">Incomplet
+                                    v-model="props.memberData.statusDeadline">Incomplet
                             </label>
                         </div>
                     </div>

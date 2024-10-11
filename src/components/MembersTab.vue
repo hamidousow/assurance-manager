@@ -1,8 +1,13 @@
 <script lang="ts" setup>
-import { useMemberCreationForm } from '@/stores/memberCreationForm';
+import { useMember } from '@/stores/member';
+import { onMounted } from 'vue';
 
-const memberStore = useMemberCreationForm();
-const allMembers = memberStore.$getAllMember();
+const memberStore = useMember();
+
+memberStore.$getAllMember();
+
+
+
 </script>
 <template>
     <table>
@@ -19,8 +24,8 @@ const allMembers = memberStore.$getAllMember();
             </tr>
         </thead>
         <tbody>
-            <div v-if="memberStore.allMembersUpdated.length === 0">Aucun membre.</div>
-            <tr v-for="member in memberStore.allMembersUpdated" :key="member.email">
+            <div v-if="memberStore.getAllMembers.length === 0">Aucun membre.</div>
+            <tr v-for="member in memberStore.getAllMembers" :key="member.email">
                 <td data-name="selected"><input type="checkbox" name="member" /></td>
                 <td data-name="id">2</td>
                 <td data-name="lastname">{{ member.lastname }}</td>

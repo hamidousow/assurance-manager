@@ -2,12 +2,12 @@
 import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { Member } from '@/types/Member'
-import { Address } from '@/types/Address'
-import type { ListElement } from '@vueform/vueform'
 
-export const useMemberCreationForm = defineStore('memberCreationForm', () => {
+export const useMember = defineStore('member', () => {
 
-    let defaultForm: Member = reactive<Member>({
+    //state
+
+    const defaultMember: Member = reactive<Member>({
         firstname: '',
         lastname: '',
         dateBirth: '',
@@ -28,13 +28,18 @@ export const useMemberCreationForm = defineStore('memberCreationForm', () => {
         }
     })
 
-    const allMembers: Array<Member> = reactive<Array<Member>>([])
+    let allMembers: Array<Member> = reactive<Array<Member>>([])
 
-    const updatedForm = computed(() => defaultForm);
-    const allMembersUpdated = computed(() => allMembers);
+    // getters
+
+    const getMember = computed(() => defaultMember);
+
+    const getAllMembers = computed(() => allMembers);
+
+    // actions
 
     function $reset() {
-        defaultForm = {
+        Object.assign(defaultMember, {
             firstname: '',
             lastname: '',
             dateBirth: '',
@@ -53,16 +58,32 @@ export const useMemberCreationForm = defineStore('memberCreationForm', () => {
                 region: '',
                 country: ''
             }
-        }
+        })
     }
 
+
+
     function $saveMember() {
-        allMembersUpdated.value.push(updatedForm.value);
+        allMembers.push({ ...getMember.value });
+        localStorage.setItem('all-members', JSON.stringify(allMembers))
     }
 
     function $getAllMember() {
-        return allMembersUpdated
+
+        const strObj = localStorage.getItem('all-members');
+
+        if (!strObj) {
+            return [];
+        }
+
+        try {
+            const parsedMembers = JSON.parse(strObj);
+            allMembers = parsedMembers
+        } catch (error) {
+            console.error("Error parsing 'all-members' from localStorage", error);
+            return [];
+        }
     }
 
-    return { defaultForm, updatedForm, $reset, $getAllMember, $saveMember, allMembersUpdated }
+    return { defaultMember, getMember, $reset, $getAllMember, $saveMember, getAllMembers }
 })

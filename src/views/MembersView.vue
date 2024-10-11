@@ -2,15 +2,15 @@
 import IconFilter from '@/components/icons/IconFilter.vue';
 import MembersTab from '@/components/MembersTab.vue';
 import CreateMemberModal from '@/components/modals/CreateMemberModal.vue';
-import { useMemberCreationForm } from '@/stores/memberCreationForm';
+import { useMember } from '@/stores/member';
 import { ref } from 'vue';
 
 const pageTitle = ref('');
 const showModal = ref(false);
-const formStorage = useMemberCreationForm()
+const memberStore = useMember()
 
 const closeModal = () => {
-    formStorage.$reset()
+    memberStore.$reset()
     showModal.value = false
 }
 
@@ -18,7 +18,6 @@ const closeModal = () => {
 </script>
 <template>
     <div>
-
         <div id="wrapper">
             <div class="title-wrapper">
                 <h1>Membres</h1>
@@ -33,7 +32,6 @@ const closeModal = () => {
             <MembersTab />
         </div>
         <Teleport to="body">
-            <!-- use the modal component, pass in the prop -->
             <CreateMemberModal :show="showModal" @close="closeModal">
                 <template #header>
                     <h3>Custom Header</h3>
