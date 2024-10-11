@@ -4,7 +4,7 @@ import FirstStep from './steps/FirstStep.vue';
 import SecondStep from './steps/SecondStep.vue';
 import FinalStep from './steps/FinalStep.vue';
 import useForm from '../../composables/useForm';
-import { useMember } from '@/stores/member';
+import { useMember } from '@/stores/memberStore';
 
 const memberStore = useMember()
 

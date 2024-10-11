@@ -1,10 +1,13 @@
 <script lang="ts" setup>
-import { useMember } from '@/stores/member';
-import { onMounted } from 'vue';
+import { useMember } from '@/stores/memberStore';
+import { onMounted, ref } from 'vue';
 
 const memberStore = useMember();
 
 memberStore.$getAllMembers();
+
+const isPaymentCompleteClass = ref('color-valide');
+const incompleteClasse = ref('color-danger');
 
 </script>
 <template>
@@ -18,20 +21,22 @@ memberStore.$getAllMembers();
                 <th> nom </th>
                 <th> prénom </th>
                 <th> type contrat </th>
-                <th> status échéance </th>
+                <th data-name="status"> status échéance </th>
             </tr>
         </thead>
         <tbody>
             <div v-if="memberStore.getAllMembers.length === 0">Aucun membre.</div>
-            <tr v-for="member in memberStore.getAllMembers" :key="member.email">
+            <tr v-else v-for="member in memberStore.getAllMembers" :key="member.email">
                 <td data-name="selected"><input type="checkbox" name="member" /></td>
                 <td data-name="id">2</td>
                 <td data-name="lastname">{{ member.lastname }}</td>
                 <td data-name="firstname">{{ member.firstname }}</td>
                 <td data-name="contract">{{ member.contract.type }}</td>
-                <td data-name="status">
-                    <div class="dot"></div>
-                    <span> {{ member.contract.isPaymentComplete }}</span>
+                <td data-name="status" class="flex justify-center">
+                    <div class="badge py-1 px-2 rounded"
+                        :class="[member.contract.isPaymentComplete ? 'color-valid' : 'color-danger']">
+                        <span class="text-xs"> {{ member.contract.isPaymentComplete ? 'À jour' : 'Incomplet' }}</span>
+                    </div>
                 </td>
             </tr>
         </tbody>
@@ -63,17 +68,22 @@ table td {
     padding: .8rem 1.4rem;
 }
 
-td[data-name="status"] {
-    display: flex;
-    flex-direction: row;
-    place-items: center;
-    gap: .5rem;
+table th[data-name="status"] {
+    /* gap: .5rem; */
+    text-align: center !important;
 }
 
-.dot {
+.badge {
     background-color: var(--color-green-status);
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
+}
+
+.color-valid {
+    background-color: var(--color-green-status);
+    color: #ffffff;
+}
+
+.color-danger {
+    background-color: var(--color-danger-status);
+    color: #ffffff;
 }
 </style>

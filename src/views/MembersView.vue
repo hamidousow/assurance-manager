@@ -2,7 +2,7 @@
 import IconFilter from '@/components/icons/IconFilter.vue';
 import MembersTab from '@/components/MembersTab.vue';
 import CreateMemberModal from '@/components/modals/CreateMemberModal.vue';
-import { useMember } from '@/stores/member';
+import { useMember } from '@/stores/memberStore';
 import { ref } from 'vue';
 
 const pageTitle = ref('');
