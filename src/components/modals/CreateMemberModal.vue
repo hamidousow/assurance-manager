@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+import { string } from '@vueform/vueform';
 import MemberSubscriptionForm from '../forms/member/MemberSubscriptionForm.vue';
 
 const props = defineProps({
-    show: Boolean
+    show: Boolean,
+    title: string
 })
 
 </script>
@@ -35,7 +37,7 @@ const props = defineProps({
     </Transition>
 </template>
 
-<style>
+<style scoped>
 .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -50,7 +52,7 @@ const props = defineProps({
 
 .modal-container {
     width: 600px;
-    height: 680px;
+    /* height: 680px; */
     margin: auto;
     background-color: var(--color-white);
     border-radius: 5px;

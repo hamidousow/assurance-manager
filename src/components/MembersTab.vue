@@ -3,16 +3,20 @@ import { useMember } from '@/stores/memberStore';
 import { onMounted, ref } from 'vue';
 import IconWatch from './icons/IconWatch.vue';
 import IconMenu from './icons/IconMenu.vue';
+import MemberViewForm from './forms/member/MemberViewForm.vue';
+import ViewMemberModal from './modals/ViewMemberModal.vue';
 
 const memberStore = useMember();
 
 memberStore.$getAllMembers();
 
+const showModal = ref(false);
+
 const isPaymentCompleteClass = ref('color-valide');
 const incompleteClasse = ref('color-danger');
 
-function openModal() {
-    console.log("ouverture modal")
+const closeModal = () => {
+    showModal.value = false
 }
 
 </script>
@@ -35,7 +39,7 @@ function openModal() {
             <div v-if="memberStore.getAllMembers.length === 0">Aucun membre.</div>
             <tr v-else v-for="member in memberStore.getAllMembers" :key="member.email">
                 <td data-name="selected"><input type="checkbox" name="member" /></td>
-                <td data-name="id">{{  member.id }}</td>
+                <td data-name="id">{{ member.id }}</td>
                 <td data-name="lastname">{{ member.lastname }}</td>
                 <td data-name="firstname">{{ member.firstname }}</td>
                 <td data-name="contract">{{ member.contract.type }}</td>
@@ -47,8 +51,8 @@ function openModal() {
                 </td>
                 <td data-view="view">
                     <div class="flex flex-row gap-6">
-                        <button>
-                            <IconWatch @click="openModal"/>
+                        <button @click="showModal = true">
+                            <IconWatch />
                         </button>
                         <IconMenu />
                     </div>
@@ -56,6 +60,9 @@ function openModal() {
             </tr>
         </tbody>
     </table>
+    <Teleport to="body">
+        <ViewMemberModal :show="showModal" :title="'Information client'" :member="memberStore.getMember" @close="closeModal"/>
+    </Teleport>
 </template>
 
 

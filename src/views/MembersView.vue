@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import MemberViewForm from '@/components/forms/member/MemberViewForm.vue';
 import IconFilter from '@/components/icons/IconFilter.vue';
 import MembersTab from '@/components/MembersTab.vue';
 import CreateMemberModal from '@/components/modals/CreateMemberModal.vue';
 import { useMember } from '@/stores/memberStore';
 import { ref } from 'vue';
 
-const pageTitle = ref('');
+
 const showModal = ref(false);
 const memberStore = useMember()
 
@@ -13,7 +14,6 @@ const closeModal = () => {
     memberStore.$reset()
     showModal.value = false
 }
-
 
 </script>
 <template>
@@ -32,11 +32,7 @@ const closeModal = () => {
             <MembersTab />
         </div>
         <Teleport to="body">
-            <CreateMemberModal :show="showModal" @close="closeModal">
-                <template #header>
-                    <h3>Custom Header</h3>
-                </template>
-            </CreateMemberModal>
+            <CreateMemberModal :show="showModal" @close="closeModal"/>
         </Teleport>
     </div>
 </template>
