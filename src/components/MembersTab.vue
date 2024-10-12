@@ -19,6 +19,11 @@ const closeModal = () => {
     showModal.value = false
 }
 
+function openModal(id: string) {
+    memberStore.$findMemberById(id)
+    showModal.value = true
+}
+
 </script>
 <template>
     <table>
@@ -51,7 +56,7 @@ const closeModal = () => {
                 </td>
                 <td data-view="view">
                     <div class="flex flex-row gap-6">
-                        <button @click="showModal = true">
+                        <button @click="openModal(member.id)">
                             <IconWatch />
                         </button>
                         <IconMenu />
@@ -61,7 +66,7 @@ const closeModal = () => {
         </tbody>
     </table>
     <Teleport to="body">
-        <ViewMemberModal :show="showModal" :title="'Information client'" :member="memberStore.getMember" @close="closeModal"/>
+        <ViewMemberModal :show="showModal" :title="'Informations client'" :member="memberStore.getMember" @close="closeModal"/>
     </Teleport>
 </template>
 

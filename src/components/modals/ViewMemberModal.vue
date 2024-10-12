@@ -17,8 +17,10 @@ const props = defineProps<{
         <div class="modal-mask" v-if="show">
             <div class="modal-container py-14 px-8">
                 <div class="flex flex-row justify-between">
-                    <h2>{{ props.title }}</h2>
-                    <button @click="$emit('close')"> <IconClose /> </button>
+                    <h3 class="uppercase font-bold mb-8">{{ props.title }}</h3>
+                    <div @click="$emit('close')">
+                        <IconClose />
+                    </div>
                 </div>
                 <MemberViewForm :member="props.member" />
             </div>
@@ -40,8 +42,9 @@ const props = defineProps<{
 }
 
 .modal-container {
-    width: 600px;
-    /* height: 680px; */
+    width: 1000px;
+    height: 680px;
+    overflow-y: scroll;
     margin: auto;
     background-color: var(--color-white);
     border-radius: 5px;

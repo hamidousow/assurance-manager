@@ -1,7 +1,9 @@
 export const genUniqueId = (): string => {
     const dateStr = Date
         .now()
-        .toString(36); // convert num to base 36 and stringify
+        .toString(36) // convert num to base 36 and stringify
+        .toLowerCase()
+    
 
     const randomStr = Math
         .random()

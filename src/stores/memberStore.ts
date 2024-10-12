@@ -77,6 +77,13 @@ export const useMember = defineStore('member', () => {
         })
     }
 
+    const id = ref(0);
+    const getNextId = computed(() => id)
+
+    function $nextId() {
+        return ++id.value
+    }
+
     function $saveMember() {
         defaultMember.id = genUniqueId();
         allMembers.push({ ...getMember.value });
@@ -100,5 +107,22 @@ export const useMember = defineStore('member', () => {
         }
     }
 
-    return { defaultMember, getMember, $reset, $getAllMembers, $saveMember, getAllMembers }
+    function $findMemberById(id: string) { 
+
+        const strObj = localStorage.getItem('all-members');
+
+        if(!strObj) {
+            return []
+        }
+
+        try {
+            allMembers = JSON.parse(strObj);
+            
+            Object.assign(defaultMember, getAllMembers.value.find((member) => member.id == id));
+        } catch(error) {
+            console.error(error)
+        }
+    }
+
+    return { defaultMember, getMember, $reset, $getAllMembers, $saveMember, getAllMembers, $findMemberById }
 })

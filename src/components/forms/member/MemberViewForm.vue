@@ -16,6 +16,7 @@ const props = defineProps<{
 </script>
 <template>
     <FirstStep :memberData="props.member" />
+    <div class="separator w-full h-px bg-gray-300 rounded mb-8"></div>
     <SecondStep :memberData="props.member" />
 </template>
 
