@@ -16,6 +16,7 @@ const isPaymentCompleteClass = ref('color-valide');
 const incompleteClasse = ref('color-danger');
 
 const closeModal = () => {
+    memberStore.$reset()
     showModal.value = false
 }
 
