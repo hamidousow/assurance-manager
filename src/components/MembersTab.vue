@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { useMember } from '@/stores/memberStore';
 import { onMounted, ref } from 'vue';
+import IconWatch from './icons/IconWatch.vue';
+import IconMenu from './icons/IconMenu.vue';
 
 const memberStore = useMember();
 
@@ -8,6 +10,10 @@ memberStore.$getAllMembers();
 
 const isPaymentCompleteClass = ref('color-valide');
 const incompleteClasse = ref('color-danger');
+
+function openModal() {
+    console.log("ouverture modal")
+}
 
 </script>
 <template>
@@ -22,6 +28,7 @@ const incompleteClasse = ref('color-danger');
                 <th> prénom </th>
                 <th> type contrat </th>
                 <th data-name="status"> status échéance </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +43,14 @@ const incompleteClasse = ref('color-danger');
                     <div class="badge py-1 px-2 rounded"
                         :class="[member.contract.isPaymentComplete ? 'color-valid' : 'color-danger']">
                         <span class="text-xs"> {{ member.contract.isPaymentComplete ? 'À jour' : 'Incomplet' }}</span>
+                    </div>
+                </td>
+                <td data-view="view">
+                    <div class="flex flex-row gap-6">
+                        <button>
+                            <IconWatch @click="openModal"/>
+                        </button>
+                        <IconMenu />
                     </div>
                 </td>
             </tr>
