@@ -28,9 +28,9 @@ const previousStep = () => {
 }
 
 const createMember = async (fields: any) => {
-    memberStore.$saveMember()
-    await new Promise((r) => setTimeout(r, 1000))
-    alert(JSON.stringify(fields))
+    memberStore.$saveMember();
+    await new Promise((r) => setTimeout(r, 1000));
+    alert(JSON.stringify(fields));
 }
 
 </script>

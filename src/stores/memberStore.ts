@@ -2,6 +2,7 @@
 import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import type { Member } from '@/types/Member'
+import { genUniqueId } from '@/utils/uniqueIdGenerator'
 
 
 export const useMember = defineStore('member', () => {
@@ -9,6 +10,7 @@ export const useMember = defineStore('member', () => {
     //state
 
     const defaultMember: Member = reactive<Member>({
+        id: '',
         firstname: '',
         lastname: '',
         dateBirth: '',
@@ -47,6 +49,7 @@ export const useMember = defineStore('member', () => {
 
     function $reset() {
         Object.assign(defaultMember, {
+            id: '',
             firstname: '',
             lastname: '',
             dateBirth: '',
@@ -74,11 +77,10 @@ export const useMember = defineStore('member', () => {
         })
     }
 
-
-
     function $saveMember() {
+        defaultMember.id = genUniqueId();
         allMembers.push({ ...getMember.value });
-        localStorage.setItem('all-members', JSON.stringify(allMembers))
+        localStorage.setItem('all-members', JSON.stringify(allMembers));
     }
 
     function $getAllMembers() {

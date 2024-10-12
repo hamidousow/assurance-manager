@@ -2,6 +2,7 @@ import type { Address } from "./Address"
 import type { Contract } from "./Contract";
 
 export interface Member {
+    id: string;
     firstname: string;
     lastname: string;
     dateBirth: string;

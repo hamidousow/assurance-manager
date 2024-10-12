@@ -35,7 +35,7 @@ function openModal() {
             <div v-if="memberStore.getAllMembers.length === 0">Aucun membre.</div>
             <tr v-else v-for="member in memberStore.getAllMembers" :key="member.email">
                 <td data-name="selected"><input type="checkbox" name="member" /></td>
-                <td data-name="id">2</td>
+                <td data-name="id">{{  member.id }}</td>
                 <td data-name="lastname">{{ member.lastname }}</td>
                 <td data-name="firstname">{{ member.firstname }}</td>
                 <td data-name="contract">{{ member.contract.type }}</td>
