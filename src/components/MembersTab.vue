@@ -20,6 +20,10 @@ function openModal(id: string, index: number) {
     showModal.value = true;
 }
 
+function openMenu() {
+    console.log('menu ouvert')
+}
+
 memberStore.$getAllMembers()
 
 </script>
@@ -57,7 +61,16 @@ memberStore.$getAllMembers()
                         <button @click="openModal(member.id, index)">
                             <IconWatch />
                         </button>
-                        <IconMenu />
+                        <IconMenu @click="openMenu"/>
+                        <div class="tab-menu">
+                            <div class="menu-container">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li @click="memberStore.$deleteMemberByIndex(index)">supprimer</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>

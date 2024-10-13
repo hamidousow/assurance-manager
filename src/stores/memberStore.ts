@@ -147,6 +147,26 @@ export const useMember = defineStore('member', () => {
         indexMember.value = index;
     }
 
+    function $deleteMemberByIndex(index: number) {
+        if(!getMember.value) {
+            // TODO: remplacer par quelque chose de plus correct
+            console.log('empty object, no data.')
+            return {}
+        } 
+
+        try {
+            // Object.assign(defaultMember, getMember.value);
+            console.log(index);
+            
+            allMembers.splice(index, 1);
+            localStorage.setItem('all-members', JSON.stringify(allMembers));
+            
+            
+        } catch(error) {
+            console.log('une erreur est survenue lors de la sauvegarde. ' + error)
+        }
+    }
+
     return { 
         getMember,
         getAllMembers, 
@@ -156,6 +176,7 @@ export const useMember = defineStore('member', () => {
         $saveMember, 
         $findMemberById,
         $updateMember,
-        $updateIndex
+        $updateIndex,
+        $deleteMemberByIndex
     }
 })
