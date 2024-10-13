@@ -121,5 +121,12 @@ export const useMember = defineStore('member', () => {
         }
     }
 
-    return { defaultMember, getMember, $reset, $getAllMembers, $saveMember, getAllMembers, $findMemberById }
+    return { 
+        getMember,
+        getAllMembers, 
+        $reset, 
+        $getAllMembers, 
+        $saveMember, 
+        $findMemberById 
+    }
 })

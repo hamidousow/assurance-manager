@@ -4,17 +4,20 @@ import MemberSubscriptionForm from '../forms/member/MemberSubscriptionForm.vue';
 import type { Member } from '@/types/Member';
 import { useMember } from '@/stores/memberStore';
 
-const memberStore = useMember()
-
 const props = defineProps({
     show: Boolean,
     title: string
 })
 
+const memberStore = useMember()
+const emit = defineEmits(['close'])
+
+
 const createMember = async (member: Member) => {
     memberStore.$saveMember(member);
     await new Promise((r) => setTimeout(r, 1000));
     alert(JSON.stringify(member));
+    emit('close');
 }
 
 </script>
@@ -27,7 +30,7 @@ const createMember = async (member: Member) => {
                     <div class="flex flex-row justify-between mb-8">
                         <h3 class="uppercase font-bold">Création d'un nouveau membre</h3>
                         <div class="buttons-wrapper">
-                            <input type="button" value="fermer" class="border py-1 px-4 rounded border-red-800 text-red-800" @click="$emit('close')">
+                            <input type="button" value="fermer" class="border py-1 px-4 rounded border-red-800 text-red-800" @click="emit('close')">
                         </div>
                     </div>
                     <nav class="flex flex-row justify-between gap-1">
