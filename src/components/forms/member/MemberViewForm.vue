@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onBeforeUnmount, ref } from 'vue';
 import FirstStep from './steps/FirstStep.vue';
 import SecondStep from './steps/SecondStep.vue';
 import FinalStep from './steps/FinalStep.vue';
@@ -15,6 +15,9 @@ const memberStore = useMember()
 const props = defineProps<{
     member: Member
 }>()
+
+    
+
 
 </script>
 <template>

@@ -38,12 +38,15 @@ export const useMember = defineStore('member', () => {
     })
 
     let allMembers: Array<Member> = reactive<Array<Member>>([])
+    const indexMember = ref(0);
 
     // getters
 
     const getMember = computed(() => defaultMember);
 
     const getAllMembers = computed(() => allMembers);
+
+    const getIndexMember = computed(() => indexMember);
 
     // actions
 
@@ -121,12 +124,38 @@ export const useMember = defineStore('member', () => {
         }
     }
 
+    async function $updateMember(index: number) {
+        if(!getMember.value) {
+            // TODO: remplacer par quelque chose de plus correct
+            console.log('empty object, no data.')
+            return {}
+        } 
+
+        try {
+            Object.assign(defaultMember, getMember.value);
+            allMembers.splice(index, index, getMember.value);
+            console.log(allMembers[index]);
+            localStorage.setItem('all-members', JSON.stringify(allMembers));
+            
+            
+        } catch(error) {
+            console.log('une erreur est survenue lors de la sauvegarde. ' + error)
+        }
+    }
+
+    function $updateIndex(index: number) {
+        indexMember.value = index;
+    }
+
     return { 
         getMember,
         getAllMembers, 
+        getIndexMember,
         $reset, 
         $getAllMembers, 
         $saveMember, 
-        $findMemberById 
+        $findMemberById,
+        $updateMember,
+        $updateIndex
     }
 })

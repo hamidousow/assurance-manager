@@ -14,14 +14,13 @@ const closeModal = () => {
     showModal.value = false
 }
 
-function openModal(id: string) {
-    memberStore.$findMemberById(id)
-    showModal.value = true
+function openModal(id: string, index: number) {
+    memberStore.$findMemberById(id);
+    memberStore.$updateIndex(index)
+    showModal.value = true;
 }
 
-watchEffect(() => {
-    memberStore.$getAllMembers()
-})
+memberStore.$getAllMembers()
 
 </script>
 <template>
@@ -55,7 +54,7 @@ watchEffect(() => {
                 </td>
                 <td data-view="view">
                     <div class="flex flex-row gap-6">
-                        <button @click="openModal(member.id)">
+                        <button @click="openModal(member.id, index)">
                             <IconWatch />
                         </button>
                         <IconMenu />

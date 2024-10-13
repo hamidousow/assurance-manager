@@ -3,16 +3,20 @@ import { string } from '@vueform/vueform';
 import MemberViewForm from '../forms/member/MemberViewForm.vue';
 import type { Member } from '@/types/Member';
 import IconClose from '../icons/IconClose.vue';
+import { useMember } from '@/stores/memberStore';
 
 const props = defineProps<{
     show: Boolean,
     title: string,
-    member: Member
+    member: Member,
 }>()
 
 const emit = defineEmits(['close']);
 
-async function update() {
+const memberStore = useMember();
+
+async function update(index: number) {
+    memberStore.$updateMember(index)
     await new Promise((r) => setTimeout(r, 1000));
     alert('modifications sauvegardés'); 
     emit('close');
@@ -30,7 +34,7 @@ async function update() {
                         <IconClose />
                     </div>
                 </div>
-                <MemberViewForm :member="props.member" @close="emit('close')" @update="update()"/>
+                <MemberViewForm :member="props.member" @close="emit('close')" @update="update(memberStore.getIndexMember.value)"/>
             </div>
         </div>
     </Transition>
