@@ -78,9 +78,10 @@ export const useMember = defineStore('member', () => {
     }
 
     function $saveMember(member: Member) {
-        defaultMember.id = genUniqueId();
+        member.id = genUniqueId();
         allMembers.push({ ...member });
         localStorage.setItem('all-members', JSON.stringify(allMembers));
+        $getAllMembers()
     }
 
     function $getAllMembers() {
@@ -93,7 +94,7 @@ export const useMember = defineStore('member', () => {
 
         try {
             const parsedMembers = JSON.parse(strObj);
-            allMembers = parsedMembers
+            allMembers.splice(0, allMembers.length, ...parsedMembers);
         } catch (error) {
             console.error("Error parsing 'all-members' from localStorage", error);
             return [];
@@ -103,6 +104,7 @@ export const useMember = defineStore('member', () => {
     function $findMemberById(id: string) { 
 
         const strObj = localStorage.getItem('all-members');
+        
 
         if(!strObj) {
             return []
@@ -110,8 +112,10 @@ export const useMember = defineStore('member', () => {
 
         try {
             allMembers = JSON.parse(strObj);
-            
-            Object.assign(defaultMember, getAllMembers.value.find((member) => member.id == id));
+            const memberFind = getAllMembers.value.find((member) => member.id == id);
+            if(memberFind) {
+                Object.assign(defaultMember, memberFind);
+            }
         } catch(error) {
             console.error(error)
         }
