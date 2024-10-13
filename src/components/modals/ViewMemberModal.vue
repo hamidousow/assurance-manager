@@ -10,6 +10,14 @@ const props = defineProps<{
     member: Member
 }>()
 
+const emit = defineEmits(['close']);
+
+async function update() {
+    await new Promise((r) => setTimeout(r, 1000));
+    alert('modifications sauvegardés'); 
+    emit('close');
+} 
+
 </script>
 
 <template>
@@ -22,7 +30,7 @@ const props = defineProps<{
                         <IconClose />
                     </div>
                 </div>
-                <MemberViewForm :member="props.member" />
+                <MemberViewForm :member="props.member" @close="emit('close')" @update="update()"/>
             </div>
         </div>
     </Transition>

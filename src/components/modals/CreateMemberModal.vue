@@ -16,6 +16,7 @@ const emit = defineEmits(['close'])
 const createMember = async (member: Member) => {
     memberStore.$saveMember(member);
     await new Promise((r) => setTimeout(r, 1000));
+    // TODO: Remplacer la fonction 'alert()' par un modal de notification de création
     alert(JSON.stringify(member));
     emit('close');
 }

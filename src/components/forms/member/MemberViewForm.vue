@@ -6,6 +6,9 @@ import FinalStep from './steps/FinalStep.vue';
 import useForm from '../../composables/useForm';
 import { useMember } from '@/stores/memberStore';
 import type { Member } from '@/types/Member';
+import ButtonComponent from '@/components/ButtonComponent.vue';
+
+const emit = defineEmits(['close', 'update'])
 
 const memberStore = useMember()
 
@@ -18,6 +21,14 @@ const props = defineProps<{
     <FirstStep :memberData="props.member" />
     <div class="separator w-full h-px bg-gray-300 rounded mb-8"></div>
     <SecondStep :memberData="props.member" />
+
+    <div class="wrapper-buttons flex flex-row justify-around items-end">
+
+        <ButtonComponent :type="'button'" :value="'annuler'" :class="'border border-red-800 text-red-800'"
+            @click="emit('close')" />
+        <ButtonComponent :type="'button'" :value="'sauvegarder'" :class="'border bg-blue-600 text-white'"
+            @click="emit('update')" />
+    </div>
 </template>
 
 

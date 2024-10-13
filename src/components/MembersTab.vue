@@ -3,7 +3,6 @@ import { useMember } from '@/stores/memberStore';
 import { onMounted, ref, watchEffect } from 'vue';
 import IconWatch from './icons/IconWatch.vue';
 import IconMenu from './icons/IconMenu.vue';
-import MemberViewForm from './forms/member/MemberViewForm.vue';
 import ViewMemberModal from './modals/ViewMemberModal.vue';
 
 const memberStore = useMember();
