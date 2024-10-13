@@ -12,9 +12,6 @@ memberStore.$getAllMembers();
 
 const showModal = ref(false);
 
-const isPaymentCompleteClass = ref('color-valide');
-const incompleteClasse = ref('color-danger');
-
 const closeModal = () => {
     // memberStore.$reset()
     showModal.value = false
@@ -50,7 +47,7 @@ function openModal(id: string) {
                 <td data-name="firstname">{{ member.firstname }}</td>
                 <td data-name="contract">{{ member.contract.type }}</td>
                 <td data-name="status" class="flex justify-center">
-                    <div class="badge py-1 px-2 rounded"
+                    <div class="badge py-px px-3 rounded-full"
                         :class="[member.contract.isPaymentComplete ? 'color-valid' : 'color-danger']">
                         <span class="text-xs"> {{ member.contract.isPaymentComplete ? 'À jour' : 'Incomplet' }}</span>
                     </div>
