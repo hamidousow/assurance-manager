@@ -16,7 +16,7 @@ const isPaymentCompleteClass = ref('color-valide');
 const incompleteClasse = ref('color-danger');
 
 const closeModal = () => {
-    memberStore.$reset()
+    // memberStore.$reset()
     showModal.value = false
 }
 
@@ -43,7 +43,7 @@ function openModal(id: string) {
         </thead>
         <tbody>
             <div v-if="memberStore.getAllMembers.length === 0">Aucun membre.</div>
-            <tr v-else v-for="member in memberStore.getAllMembers" :key="member.email">
+            <tr v-else v-for="(member, index) in memberStore.getAllMembers" :key="index">
                 <td data-name="selected"><input type="checkbox" name="member" /></td>
                 <td data-name="id">{{ member.id }}</td>
                 <td data-name="lastname">{{ member.lastname }}</td>

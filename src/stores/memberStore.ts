@@ -77,17 +77,9 @@ export const useMember = defineStore('member', () => {
         })
     }
 
-    const id = ref(0);
-    const getNextId = computed(() => id)
-
-    function $nextId() {
-        return ++id.value
-    }
-
-    function $saveMember() {
+    function $saveMember(member: Member) {
         defaultMember.id = genUniqueId();
-        allMembers.push({ ...getMember.value });
-        getMember
+        allMembers.push({ ...member });
         localStorage.setItem('all-members', JSON.stringify(allMembers));
     }
 

@@ -1,11 +1,21 @@
 <script lang="ts" setup>
 import { string } from '@vueform/vueform';
 import MemberSubscriptionForm from '../forms/member/MemberSubscriptionForm.vue';
+import type { Member } from '@/types/Member';
+import { useMember } from '@/stores/memberStore';
+
+const memberStore = useMember()
 
 const props = defineProps({
     show: Boolean,
     title: string
 })
+
+const createMember = async (member: Member) => {
+    memberStore.$saveMember(member);
+    await new Promise((r) => setTimeout(r, 1000));
+    alert(JSON.stringify(member));
+}
 
 </script>
 
@@ -31,7 +41,7 @@ const props = defineProps({
                         </div>
                     </nav>
                 </div>
-                <MemberSubscriptionForm />
+                <MemberSubscriptionForm :isModalOpen="show" @create="createMember(memberStore.getMember)"/>
             </div>
         </div>
     </Transition>
