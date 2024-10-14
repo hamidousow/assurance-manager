@@ -29,7 +29,7 @@ const closeModal = () => {
                 <input type="button" id="button-create" @click="showModal = true" value="+ Nouveau">
             </div>
             <div id="search-wrapper">
-                <input type="search" name="" id="search-bar" placeholder="rechercher un membre par id, nom, prénom..">
+                <input type="search" name="" id="search-bar" class="bg-stone-100" placeholder="rechercher un membre par id, nom, prénom..">
                 <div class="flex flex-row gap-2 px-2 py-1">
                     <IconFilter /> Filtres
                 </div>
@@ -71,7 +71,6 @@ h1 {
 #search-bar {
     height: 2.5rem;
     width: 22em;
-    background-color: #efefef;
     border-radius: 5px;
     border: 1px solid transparent;
     padding: .5rem;

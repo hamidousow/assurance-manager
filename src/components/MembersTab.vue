@@ -28,15 +28,15 @@ memberStore.$getAllMembers()
     <table>
         <thead>
             <tr>
-                <th>
+                <th class="bg-gradient-to-b from-gray-100">
                     <input type="checkbox" name="select-all-members" />
                 </th>
-                <th> id </th>
-                <th> nom </th>
-                <th> prénom </th>
-                <th> type contrat </th>
-                <th data-name="status"> status échéance </th>
-                <th></th>
+                <th class="bg-gradient-to-b from-gray-100"> id </th>
+                <th class="bg-gradient-to-b from-gray-100"> nom </th>
+                <th class="bg-gradient-to-b from-gray-100"> prénom </th>
+                <th class="bg-gradient-to-b from-gray-100"> type contrat </th>
+                <th class="bg-gradient-to-b from-gray-100" data-name="status"> status échéance </th>
+                <th class="bg-gradient-to-b from-gray-100"></th>
             </tr>
         </thead>
         <tbody>
@@ -58,7 +58,7 @@ memberStore.$getAllMembers()
                         <button type="button" @click="openModal(member.id, index)">
                             <IconWatch />
                         </button>
-                        <button type="button"  @click="memberStore.$deleteMemberByIndex(index)">
+                        <button type="button" @click="memberStore.$deleteMemberByIndex(index)">
                             <IconTrash />
                         </button>
                     </div>
@@ -67,7 +67,8 @@ memberStore.$getAllMembers()
         </tbody>
     </table>
     <Teleport to="body">
-        <ViewMemberModal :show="showModal" :title="'Informations client'" :member="memberStore.getMember" @close="closeModal"/>
+        <ViewMemberModal :show="showModal" :title="'Informations client'" :member="memberStore.getMember"
+            @close="closeModal" />
     </Teleport>
 </template>
 
@@ -83,11 +84,18 @@ table {
 }
 
 table th {
-    background: rgb(238, 238, 238);
-    background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 0) 100%);
+    /* background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(199, 199, 199, 0) 100%); */
     font-weight: 700;
     text-transform: uppercase;
     padding: 1.4rem;
+}
+
+th:first-child {
+    border-top-left-radius: 5px;
+}
+
+th:last-child {
+    border-top-right-radius: 5px;
 }
 
 table td {
@@ -109,10 +117,11 @@ table th[data-name="status"] {
     background-color: rgb(16 185 129);
     color: #ffffff;
 }
+
 /* orange : rgb(251 146 60); */
 .color-danger {
     background-color: rgb(244 63 94);
-    
+
     color: #ffffff;
 }
 </style>
