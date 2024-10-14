@@ -4,7 +4,7 @@ import IconFilter from '@/components/icons/IconFilter.vue';
 import MembersTab from '@/components/MembersTab.vue';
 import CreateMemberModal from '@/components/modals/CreateMemberModal.vue';
 import { useMember } from '@/stores/memberStore';
-import { ref } from 'vue';
+import { ref, Teleport } from 'vue';
 
 
 const showModal = ref(false);
@@ -34,6 +34,7 @@ const closeModal = () => {
                     <IconFilter /> Filtres
                 </div>
             </div>
+
             <MembersTab />
         </div>
         <Teleport to="body">

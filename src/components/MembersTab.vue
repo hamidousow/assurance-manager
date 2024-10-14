@@ -4,10 +4,12 @@ import { onMounted, ref, watchEffect } from 'vue';
 import IconWatch from './icons/IconWatch.vue';
 import IconMenu from './icons/IconMenu.vue';
 import ViewMemberModal from './modals/ViewMemberModal.vue';
+import IconTrash from './icons/IconTrash.vue';
 
 const memberStore = useMember();
 
 const showModal = ref(false);
+const contextMenu = ref(false);
 
 const closeModal = () => {
     showModal.value = false
@@ -18,10 +20,6 @@ function openModal(id: string, index: number) {
     memberStore.$findMemberById(id);
     memberStore.$updateIndex(index);
     showModal.value = true;
-}
-
-function openMenu() {
-    console.log('menu ouvert')
 }
 
 memberStore.$getAllMembers()
@@ -57,20 +55,13 @@ memberStore.$getAllMembers()
                     </div>
                 </td>
                 <td data-view="view">
-                    <div class="flex flex-row gap-6">
-                        <button @click="openModal(member.id, index)">
+                    <div class="flex flex-row gap-6 relative">
+                        <button type="button" @click="openModal(member.id, index)">
                             <IconWatch />
                         </button>
-                        <IconMenu @click="openMenu"/>
-                        <div class="tab-menu">
-                            <div class="menu-container">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li @click="memberStore.$deleteMemberByIndex(index)">supprimer</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <button type="button"  @click="memberStore.$deleteMemberByIndex(index)">
+                            <IconTrash />
+                        </button>
                     </div>
                 </td>
             </tr>
