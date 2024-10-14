@@ -52,7 +52,7 @@ const props = defineProps<{
                 <div class="input-wrapper flex flex-col flex-1 gap-2">
                     <label for="zipCode" class="font-bold">Pays</label>
                     <select id="country" class="border p-2 rounded" v-model="props.memberData.address.country">
-                        <option value="" selected>sélectionner le pays de résidence</option>
+                        <option selected>sélectionner le pays de résidence</option>
                         <option value="France">France</option>
                         <option value="Belgique">Belgique</option>
                     </select>

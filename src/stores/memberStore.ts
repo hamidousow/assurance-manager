@@ -61,7 +61,6 @@ export const useMember = defineStore('member', () => {
     }
 
     function $getAllMembers() {
-        console.log('je suis la fonction getAllMembers')
         const strObj = localStorage.getItem('all-members');
 
         if (!strObj) {
@@ -111,8 +110,7 @@ export const useMember = defineStore('member', () => {
             console.log('une erreur est survenue lors de la sauvegarde. ' + error)
         }
         $getAllMembers();
-        $reset()
-        
+        // $reset()        
     }
 
     function $updateIndex(index: number) {
