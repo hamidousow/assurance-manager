@@ -8,27 +8,27 @@ import IconMember from './icons/IconMember.vue';
 </script>
 
 <template>
-    <aside id="aside">
+    <aside id="aside" class="px-8 py-32">
         <nav>
             <ul>
                 <li>
                     <RouterLink to="/">
-                        <IconDashboard /> Home
+                        <IconDashboard class="fill-gray-400"/> Home
                     </RouterLink>
                 </li>
                 <li>
                     <RouterLink to="/members">
-                        <IconMember /> Membres
+                        <IconMember class="fill-gray-400"/> Membres
                     </RouterLink>
                 </li>
                 <li>
                     <RouterLink to="/contrats">
-                        <IconContract /> Contrats
+                        <IconContract class="fill-gray-400"/> Contrats
                     </RouterLink>
                 </li>
                 <li>
                     <RouterLink to="/archives">
-                        <IconArchive /> Archives
+                        <IconArchive class="fill-gray-400"/> Archives
                     </RouterLink>
                 </li>
             </ul>
@@ -42,7 +42,6 @@ import IconMember from './icons/IconMember.vue';
 #aside {
     border-right: 1px solid var(--color-grey);
     height: 100%;
-    padding: 0 2rem;
 }
 
 aside nav {
