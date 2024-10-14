@@ -3,6 +3,9 @@ import { string } from '@vueform/vueform';
 import MemberSubscriptionForm from '../forms/member/MemberSubscriptionForm.vue';
 import type { Member } from '@/types/Member';
 import { useMember } from '@/stores/memberStore';
+import { onBeforeMount, onMounted } from 'vue';
+
+
 
 const props = defineProps({
     show: Boolean,
@@ -10,14 +13,13 @@ const props = defineProps({
 })
 
 const memberStore = useMember()
-const emit = defineEmits(['close'])
 
+const emit = defineEmits(['close'])
 
 const createMember = async (member: Member) => {
     memberStore.$saveMember(member);
-    await new Promise((r) => setTimeout(r, 1000));
-    // TODO: Remplacer la fonction 'alert()' par un modal de notification de création
-    alert(JSON.stringify(member));
+    //TODO: implémenter un modal de confirmation si nouveau membre créé
+    
     emit('close');
 }
 

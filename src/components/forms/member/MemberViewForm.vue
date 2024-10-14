@@ -16,9 +16,6 @@ const props = defineProps<{
     member: Member
 }>()
 
-    
-
-
 </script>
 <template>
     <FirstStep :memberData="props.member" />

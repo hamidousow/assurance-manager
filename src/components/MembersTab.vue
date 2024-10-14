@@ -10,13 +10,13 @@ const memberStore = useMember();
 const showModal = ref(false);
 
 const closeModal = () => {
-    // memberStore.$reset()
     showModal.value = false
+    memberStore.$reset()
 }
 
 function openModal(id: string, index: number) {
     memberStore.$findMemberById(id);
-    memberStore.$updateIndex(index)
+    memberStore.$updateIndex(index);
     showModal.value = true;
 }
 

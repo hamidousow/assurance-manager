@@ -15,6 +15,11 @@ const closeModal = () => {
     showModal.value = false
 }
 
+// const openModal = () => {
+//     memberStore.$reset()
+//     showModal.value = true
+// }
+
 </script>
 <template>
     <div>
