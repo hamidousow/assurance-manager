@@ -2,7 +2,6 @@
 import { useMember } from '@/stores/memberStore';
 import { onMounted, ref, watchEffect } from 'vue';
 import IconWatch from './icons/IconWatch.vue';
-import IconMenu from './icons/IconMenu.vue';
 import ViewMemberModal from './modals/ViewMemberModal.vue';
 import IconTrash from './icons/IconTrash.vue';
 
@@ -107,12 +106,13 @@ table th[data-name="status"] {
 }
 
 .color-valid {
-    background-color: var(--color-green-status);
+    background-color: rgb(16 185 129);
     color: #ffffff;
 }
-
+/* orange : rgb(251 146 60); */
 .color-danger {
-    background-color: var(--color-danger-status);
+    background-color: rgb(244 63 94);
+    
     color: #ffffff;
 }
 </style>
